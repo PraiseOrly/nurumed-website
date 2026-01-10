@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, HeartPulse } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { HeartPulse, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Button } from "./ui/Button";
 
 export function Header() {
@@ -64,14 +64,13 @@ export function Header() {
 
           {/* Desktop CTAs */}
           <div className="hidden md:flex items-center gap-3">
+            <Button variant="primary" size="sm">
+              Partner with Us
+            </Button>
             <Button
               variant="ghost"
               size="sm"
-              className="text-white hover:text-[#1E2A38] hover:bg-white"
             >
-              Partner with Us
-            </Button>
-            <Button variant="primary" size="sm">
               Download App
             </Button>
           </div>
@@ -109,14 +108,14 @@ export function Header() {
               ))}
               <div className="flex flex-col gap-2 mt-3">
                 <Button
-                  variant="outline"
-                  className="w-full justify-center border-white text-white hover:bg-white hover:text-[#1E2A38]"
+                  variant="primary"
+                  className="w-full justify-center"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Partner with Us
                 </Button>
                 <Button
-                  variant="primary"
+                  variant="outline"
                   className="w-full justify-center"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >

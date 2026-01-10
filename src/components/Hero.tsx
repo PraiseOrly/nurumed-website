@@ -1,29 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, HeartPulse, ShieldCheck, Smartphone, Sparkles } from 'lucide-react';
-
-// Button Component
-const Button = ({ children, variant = 'primary', size = 'md', rightIcon, className = '', ...props }) => {
-  const baseStyles = 'inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-200';
-  
-  const variants = {
-    primary: 'bg-[#FFC94A] text-[#1E2A38] hover:bg-[#FFD670] hover:shadow-lg',
-    outline: 'border-2 border-current bg-transparent hover:bg-current hover:text-white',
-    ghost: 'bg-transparent hover:bg-white/10'
-  };
-  
-  const sizes = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg'
-  };
-  
-  return (
-    <button className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`} {...props}>
-      {children}
-      {rightIcon && <span>{rightIcon}</span>}
-    </button>
-  );
-};
+import { Button } from './ui/Button';
 
 // Floating particle component
 const Particle = ({ delay, duration, x, y, size }) => (
@@ -104,16 +81,17 @@ export default function Hero() {
               Chronic Care in Africa
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
-              Empowering communities to detect, treat, and support breast cancer
-              patients with innovative technology and compassionate care.
+            <p className="text-base md:text-lg lg:text-xl text-gray-300 mt-4 mb-8 leading-[1.5] font-medium">
+              NuruMed connects patients, doctors, insurers, and pharmacies to
+              make managing chronic diseases simple, continuous, and filled with
+              hope.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="md" rightIcon={<ArrowRight size={18} />} className="shadow-[#FFC94A]/25 shadow-xl">
+              <Button variant="outline" size="sm" className="border-[#FFC94A] text-[#FFC94A] hover:bg-[#FFC94A] hover:text-[#1E2A38]">
                 Download App
               </Button>
-              <Button variant="outline" size="md" className="border-white text-white hover:bg-white hover:text-[#007B83]">
+              <Button  variant="primary" size="sm" rightIcon={<ArrowRight size={18} />} className="hover:shadow-none hover:text-[#1E2A38] active:hover:bg-[#FFC94A] active:shadow-none text-black">
                 Partner with Us
               </Button>
             </div>

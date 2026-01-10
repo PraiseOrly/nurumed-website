@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion, HTMLMotionProps } from 'framer-motion';
+import { HTMLMotionProps, motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
+import React from 'react';
 interface ButtonProps extends HTMLMotionProps<'button'> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
@@ -20,10 +20,10 @@ export function Button({
 }: ButtonProps) {
   const baseStyles = 'inline-flex items-center justify-center rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none relative overflow-hidden';
   const variants = {
-    primary: 'bg-[#FFC94A] text-[#1E2A38] hover:bg-[#FFD670] focus:ring-[#FFC94A] shadow-lg shadow-[#FFC94A]/20 hover:shadow-[#FFC94A]/40',
+    primary: 'bg-[#FFC94A] text-white focus:ring-[#FFC94A] shadow-lg shadow-[#FFC94A]/20',
     secondary: 'bg-[#007B83] text-white hover:bg-[#00666D] focus:ring-[#007B83] shadow-lg shadow-[#007B83]/20 hover:shadow-[#007B83]/40',
-    outline: 'border-2 border-[#007B83] text-[#007B83] hover:bg-[#007B83]/5 focus:ring-[#007B83]',
-    ghost: 'text-[#6B7280] hover:bg-gray-100 hover:text-[#1E2A38] focus:ring-gray-500'
+    outline: 'border-2 border-[#FFC94A] text-[#FFC94A] hover:bg-[#FFC94A] hover:text-[#1E2A38]',
+    ghost: 'text-white hover:bg-white/10 hover:text-white'
   };
   const sizes = {
     sm: 'h-10 px-4 text-sm',
@@ -40,7 +40,7 @@ export function Button({
       {variant === 'primary' && <motion.div className="absolute inset-0 bg-white/20" initial={{
       x: '-100%'
     }} whileHover={{
-      x: '100%'
+      x: '70%'
     }} transition={{
       duration: 0.5
     }} />}
