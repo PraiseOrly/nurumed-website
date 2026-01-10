@@ -103,7 +103,16 @@ export default function Hero() {
               <span>Revolutionizing Chronic Care in Africa</span>
             </motion.div>
 
-            <h1 className="m:text-[4.5rem] text-5xl !font-light !leading-[1.15] tracking-tight text-white sm:text-6xl xl:text-[4.5rem] mb-8">
+            <h1 
+              className="m:text-[4.5rem] text-5xl !font-light !leading-[1.15] tracking-tight text-white sm:text-6xl xl:text-[4.5rem] mb-8"
+              style={{
+                lineHeight: 'inherit',
+                fontWeight: 300,
+                letterSpacing: '-0.025em',
+                WebkitFontSmoothing: 'antialiased',
+                fontFamily: 'Inter, sans-serif'
+              }}
+            >
               Bringing{' '}
               <span className="text-[#FFC94A] inline-block relative !font-bold">
                 Light
@@ -147,7 +156,7 @@ export default function Hero() {
   initial={{ opacity: 0, x: 30 }}
   animate={{ opacity: 1, x: 0 }}
   transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-  className="relative h-[440px] max-w-4xl mx-auto flex items-center justify-between px-4 lg:px-8"
+  className="relative h-[400px] max-w-3xl mx-auto flex items-center justify-between px-4 lg:px-8"
 >
   {/* First Phone - Left/Back */}
   <motion.div
@@ -160,10 +169,10 @@ export default function Hero() {
       repeat: Infinity,
       ease: 'easeInOut'
     }}
-    className="bg-white rounded-[35px] shadow-2xl border-7 border-black p-2 w-52 overflow-hidden"
+    className="bg-white rounded-[32px] shadow-2xl border-6 border-black p-1.5 w-48 overflow-hidden"
   >
     {/* Phone Screen 1 */}
-    <div className="bg-gray-50 rounded-[29px] overflow-hidden h-[418px] relative">
+    <div className="bg-gray-50 rounded-[26px] overflow-hidden h-[380px] relative">
       {/* App Header */}
       <div className="bg-[#007B83] p-6 pb-10 text-white rounded-b-[32px]">
         <div className="flex justify-between items-center mb-6">
@@ -238,10 +247,10 @@ export default function Hero() {
       ease: 'easeInOut',
       delay: 0.5
     }}
-    className="bg-white rounded-[35px] shadow-2xl border-7 border-black p-2 w-52 overflow-hidden"
+    className="bg-white rounded-[32px] shadow-2xl border-6 border-black p-1.5 w-48 overflow-hidden"
   >
     {/* Phone Screen 2 */}
-    <div className="bg-gray-50 rounded-[29px] overflow-hidden h-[418px] relative">
+    <div className="bg-gray-50 rounded-[26px] overflow-hidden h-[380px] relative">
       {/* App Header */}
       <div className="bg-gradient-to-br from-[#FFC94A] to-[#FFB020] p-6 pb-10 text-[#1E2A38] rounded-b-[32px]">
         <div className="flex justify-between items-center mb-6">
