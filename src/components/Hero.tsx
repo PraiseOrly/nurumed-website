@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, HeartPulse, ShieldCheck, Smartphone, Sparkles } from 'lucide-react';
-import { useEffect } from 'react';
 
 // Button Component
 const Button = ({ children, variant = 'primary', size = 'md', rightIcon, className = '', ...props }) => {
@@ -51,18 +50,6 @@ const Particle = ({ delay, duration, x, y, size }) => (
 );
 
 export default function Hero() {
-  // Load Inter font from Google Fonts
-  useEffect(() => {
-    const fontLink = document.createElement('link');
-    fontLink.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
-    fontLink.rel = 'stylesheet';
-    document.head.appendChild(fontLink);
-    
-    return () => {
-      document.head.removeChild(fontLink);
-    };
-  }, []);
-
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-br from-[#1E2A38] via-[#007B83] to-[#1E2A38]">
       {/* Animated Background Gradient */}
@@ -84,8 +71,8 @@ export default function Hero() {
       <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-[#FFC94A]/10 rounded-full blur-[100px] -z-10 animate-pulse" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#007B83]/20 rounded-full blur-[100px] -z-10" />
 
-      <div className="container relative z-10 flex h-full min-h-[80dvh] flex-col justify-center gap-6 text-center lg:flex-row lg:justify-between lg:text-left">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center max-w-5xl mx-auto">
+      <div className="container mx-auto px-6 md:px-12 lg:px-16 py-12 lg:py-20 relative z-10 max-w-6xl">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-5xl mx-auto">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -97,24 +84,15 @@ export default function Hero() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-[#FFC94A]/10 text-[#FFC94A] text-base font-medium mb-8 border border-[#FFC94A]/20 backdrop-blur-sm"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFC94A]/10 text-[#FFC94A] text-sm font-semibold mb-6 border border-[#FFC94A]/20 backdrop-blur-sm"
             >
-              <Sparkles size={16} className="animate-pulse" />
+              <Sparkles size={14} className="animate-pulse" />
               <span>Revolutionizing Chronic Care in Africa</span>
             </motion.div>
 
-            <h1 
-              className="m:text-[4.5rem] text-5xl !font-light !leading-[1.15] tracking-tight text-white sm:text-6xl xl:text-[4.5rem] mb-8"
-              style={{
-                lineHeight: 'inherit',
-                fontWeight: 300,
-                letterSpacing: '-0.025em',
-                WebkitFontSmoothing: 'antialiased',
-                fontFamily: 'Inter, sans-serif'
-              }}
-            >
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.25] tracking-tight text-white mb-6">
               Bringing{' '}
-              <span className="text-[#FFC94A] inline-block relative !font-bold">
+              <span className="text-[#FFC94A] inline-block relative">
                 Light
                 <motion.span
                   className="absolute inset-0 bg-[#FFC94A]/20 blur-lg"
@@ -126,26 +104,16 @@ export default function Hero() {
               Chronic Care in Africa
             </h1>
 
-            <p 
-              className="text-xl md:text-2xl text-gray-200 mb-10 leading-loose"
-              style={{
-                lineHeight: '1.8',
-                fontWeight: 400,
-                letterSpacing: '0.01em',
-                WebkitFontSmoothing: 'antialiased',
-                fontFamily: 'Inter, sans-serif'
-              }}
-            >
-              NuruMed connects patients, doctors, insurers, and pharmacies to
-              make managing chronic diseases simple, continuous, and filled with
-              hope.
+            <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
+              Empowering communities to detect, treat, and support breast cancer
+              patients with innovative technology and compassionate care.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" rightIcon={<ArrowRight size={18} />} className="shadow-[#FFC94A]/25 shadow-xl">
+              <Button size="md" rightIcon={<ArrowRight size={18} />} className="shadow-[#FFC94A]/25 shadow-xl">
                 Download App
               </Button>
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-[#007B83]">
+              <Button variant="outline" size="md" className="border-white text-white hover:bg-white hover:text-[#007B83]">
                 Partner with Us
               </Button>
             </div>
@@ -169,7 +137,7 @@ export default function Hero() {
       repeat: Infinity,
       ease: 'easeInOut'
     }}
-    className="bg-white rounded-[32px] shadow-2xl border-6 border-black p-1.5 w-48 overflow-hidden"
+    className="bg-white rounded-[32px] shadow-2xl border-8 border-black p-1.5 w-48 overflow-hidden"
   >
     {/* Phone Screen 1 */}
     <div className="bg-gray-50 rounded-[26px] overflow-hidden h-[380px] relative">
@@ -247,7 +215,7 @@ export default function Hero() {
       ease: 'easeInOut',
       delay: 0.5
     }}
-    className="bg-white rounded-[32px] shadow-2xl border-6 border-black p-1.5 w-48 overflow-hidden"
+    className="bg-white rounded-[32px] shadow-2xl border-8 border-black p-1.5 w-48 overflow-hidden"
   >
     {/* Phone Screen 2 */}
     <div className="bg-gray-50 rounded-[26px] overflow-hidden h-[380px] relative">
