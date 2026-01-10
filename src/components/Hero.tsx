@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, HeartPulse, ShieldCheck, Smartphone, Sparkles } from 'lucide-react';
+import { useEffect } from 'react';
 
 // Button Component
 const Button = ({ children, variant = 'primary', size = 'md', rightIcon, className = '', ...props }) => {
@@ -50,6 +51,18 @@ const Particle = ({ delay, duration, x, y, size }) => (
 );
 
 export default function Hero() {
+  // Load Inter font from Google Fonts
+  useEffect(() => {
+    const fontLink = document.createElement('link');
+    fontLink.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
+    fontLink.rel = 'stylesheet';
+    document.head.appendChild(fontLink);
+    
+    return () => {
+      document.head.removeChild(fontLink);
+    };
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-br from-[#1E2A38] via-[#007B83] to-[#1E2A38]">
       {/* Animated Background Gradient */}
@@ -90,7 +103,16 @@ export default function Hero() {
               <span>Revolutionizing Chronic Care in Africa</span>
             </motion.div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
+            <h1 
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6"
+              style={{
+                lineHeight: 'inherit',
+                fontWeight: 300,
+                letterSpacing: '-0.025em',
+                WebkitFontSmoothing: 'antialiased',
+                fontFamily: 'Inter, sans-serif'
+              }}
+            >
               Bringing{' '}
               <span className="text-[#FFC94A] inline-block relative">
                 Light
@@ -104,7 +126,16 @@ export default function Hero() {
               Chronic Care in Africa
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
+            <p 
+              className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed"
+              style={{
+                lineHeight: 'inherit',
+                fontWeight: 300,
+                letterSpacing: '-0.025em',
+                WebkitFontSmoothing: 'antialiased',
+                fontFamily: 'Inter, sans-serif'
+              }}
+            >
               NuruMed connects patients, doctors, insurers, and pharmacies to
               make managing chronic diseases simple, continuous, and filled with
               hope.
