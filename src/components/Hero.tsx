@@ -84,7 +84,7 @@ export default function Hero() {
       <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-[#FFC94A]/10 rounded-full blur-[100px] -z-10 animate-pulse" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#007B83]/20 rounded-full blur-[100px] -z-10" />
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-16 py-12 lg:py-20 relative z-10 max-w-6xl">
+      <div className="container relative z-10 flex h-full min-h-[80dvh] flex-col justify-center gap-6 text-center lg:flex-row lg:justify-between lg:text-left">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center max-w-5xl mx-auto">
           {/* Text Content */}
           <motion.div
@@ -97,24 +97,15 @@ export default function Hero() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFC94A]/10 text-[#FFC94A] text-sm font-semibold mb-6 border border-[#FFC94A]/20 backdrop-blur-sm"
+              className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-[#FFC94A]/10 text-[#FFC94A] text-base font-medium mb-8 border border-[#FFC94A]/20 backdrop-blur-sm"
             >
-              <Sparkles size={14} className="animate-pulse" />
+              <Sparkles size={16} className="animate-pulse" />
               <span>Revolutionizing Chronic Care in Africa</span>
             </motion.div>
 
-            <h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6"
-              style={{
-                lineHeight: 'inherit',
-                fontWeight: 300,
-                letterSpacing: '-0.025em',
-                WebkitFontSmoothing: 'antialiased',
-                fontFamily: 'Inter, sans-serif'
-              }}
-            >
+            <h1 className="m:text-[4.5rem] text-5xl !font-light !leading-[1.15] tracking-tight text-white sm:text-6xl xl:text-[4.5rem] mb-8">
               Bringing{' '}
-              <span className="text-[#FFC94A] inline-block relative">
+              <span className="text-[#FFC94A] inline-block relative !font-bold">
                 Light
                 <motion.span
                   className="absolute inset-0 bg-[#FFC94A]/20 blur-lg"
@@ -127,11 +118,11 @@ export default function Hero() {
             </h1>
 
             <p 
-              className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed"
+              className="text-xl md:text-2xl text-gray-200 mb-10 leading-loose"
               style={{
-                lineHeight: 'inherit',
-                fontWeight: 300,
-                letterSpacing: '-0.025em',
+                lineHeight: '1.8',
+                fontWeight: 400,
+                letterSpacing: '0.01em',
                 WebkitFontSmoothing: 'antialiased',
                 fontFamily: 'Inter, sans-serif'
               }}
@@ -156,7 +147,7 @@ export default function Hero() {
   initial={{ opacity: 0, x: 30 }}
   animate={{ opacity: 1, x: 0 }}
   transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-  className="relative h-[520px] max-w-5xl mx-auto flex items-center justify-between px-8"
+  className="relative h-[440px] max-w-4xl mx-auto flex items-center justify-between px-4 lg:px-8"
 >
   {/* First Phone - Left/Back */}
   <motion.div
@@ -169,18 +160,18 @@ export default function Hero() {
       repeat: Infinity,
       ease: 'easeInOut'
     }}
-    className="bg-white rounded-[40px] shadow-2xl border-8 border-[#1E2A38] p-2 w-64 overflow-hidden"
+    className="bg-white rounded-[35px] shadow-2xl border-7 border-black p-2 w-52 overflow-hidden"
   >
     {/* Phone Screen 1 */}
-    <div className="bg-gray-50 rounded-[32px] overflow-hidden h-[520px] relative">
+    <div className="bg-gray-50 rounded-[29px] overflow-hidden h-[418px] relative">
       {/* App Header */}
-      <div className="bg-[#007B83] p-5 pb-8 text-white rounded-b-[32px]">
-        <div className="flex justify-between items-center mb-5">
+      <div className="bg-[#007B83] p-6 pb-10 text-white rounded-b-[32px]">
+        <div className="flex justify-between items-center mb-6">
           <div>
-            <p className="text-xs opacity-80">Good Morning,</p>
-            <p className="text-base font-bold">Sarah Amara</p>
+            <p className="text-sm opacity-80">Good Morning,</p>
+            <p className="text-lg font-bold">Sarah Amara</p>
           </div>
-          <div className="h-9 w-9 rounded-full bg-white/20 flex items-center justify-center border border-white/30">
+          <div className="h-10 w-10 rounded-full bg-white/20 flex items-center justify-center border border-white/30">
             <img
               src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=100&q=80"
               alt="User"
@@ -190,45 +181,45 @@ export default function Hero() {
         </div>
 
         {/* Vitals Card */}
-        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-3">
-          <div className="flex justify-between items-start mb-1.5">
-            <span className="text-xs opacity-90">Blood Pressure</span>
-            <HeartPulse size={14} className="text-[#FFC94A]" />
+        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4">
+          <div className="flex justify-between items-start mb-2">
+            <span className="text-sm opacity-90">Blood Pressure</span>
+            <HeartPulse size={16} className="text-[#FFC94A]" />
           </div>
-          <div className="text-2xl font-bold mb-1">120/80</div>
-          <div className="inline-flex items-center gap-1 text-xs bg-[#22C55E]/20 text-[#22C55E] px-2 py-0.5 rounded-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E]"></span>
+          <div className="text-3xl font-bold mb-2">120/80</div>
+          <div className="inline-flex items-center gap-1.5 text-sm bg-[#22C55E]/20 text-[#22C55E] px-3 py-1 rounded-full">
+            <span className="w-2 h-2 rounded-full bg-[#22C55E]"></span>
             Normal
           </div>
         </div>
       </div>
 
       {/* App Content */}
-      <div className="p-5 -mt-5">
-        <div className="grid grid-cols-2 gap-3 mb-5">
-          <div className="bg-white p-3 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-[#FFC94A]/10 flex items-center justify-center text-[#FFC94A]">
-              <Smartphone size={16} />
+      <div className="p-6 -mt-6">
+        <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-[#FFC94A]/10 flex items-center justify-center text-[#FFC94A]">
+              <Smartphone size={20} />
             </div>
-            <span className="text-xs font-semibold text-gray-800">Consult</span>
+            <span className="text-base font-semibold text-gray-800">Consult</span>
           </div>
-          <div className="bg-white p-3 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-[#007B83]/10 flex items-center justify-center text-[#007B83]">
-              <ShieldCheck size={16} />
+          <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-[#007B83]/10 flex items-center justify-center text-[#007B83]">
+              <ShieldCheck size={20} />
             </div>
-            <span className="text-xs font-semibold text-gray-800">Meds</span>
+            <span className="text-base font-semibold text-gray-800">Meds</span>
           </div>
         </div>
 
-        <p className="text-xs font-bold text-gray-800 mb-2">Upcoming</p>
-        <div className="bg-white p-3 rounded-xl shadow-sm border-l-4 border-[#FFC94A] flex items-center gap-3">
+        <p className="text-base font-bold text-gray-800 mb-3">Upcoming</p>
+        <div className="bg-white p-4 rounded-2xl shadow-sm border-l-4 border-[#FFC94A] flex items-center gap-4">
           <div className="text-center">
-            <div className="text-xs text-gray-500">OCT</div>
-            <div className="text-base font-bold text-[#1E2A38]">12</div>
+            <div className="text-sm text-gray-500">OCT</div>
+            <div className="text-xl font-bold text-[#1E2A38]">12</div>
           </div>
           <div>
-            <div className="font-semibold text-sm text-[#1E2A38]">Dr. Omondi</div>
-            <div className="text-xs text-gray-500">Cardiologist • 10:00 AM</div>
+            <div className="font-semibold text-base text-[#1E2A38]">Dr. Omondi</div>
+            <div className="text-sm text-gray-500">Cardiologist • 10:00 AM</div>
           </div>
         </div>
       </div>
@@ -247,53 +238,53 @@ export default function Hero() {
       ease: 'easeInOut',
       delay: 0.5
     }}
-    className="bg-white rounded-[40px] shadow-2xl border-8 border-[#1E2A38] p-2 w-64 overflow-hidden"
+    className="bg-white rounded-[35px] shadow-2xl border-7 border-black p-2 w-52 overflow-hidden"
   >
     {/* Phone Screen 2 */}
-    <div className="bg-gray-50 rounded-[32px] overflow-hidden h-[520px] relative">
+    <div className="bg-gray-50 rounded-[29px] overflow-hidden h-[418px] relative">
       {/* App Header */}
-      <div className="bg-gradient-to-br from-[#FFC94A] to-[#FFB020] p-5 pb-8 text-[#1E2A38] rounded-b-[32px]">
-        <div className="flex justify-between items-center mb-5">
+      <div className="bg-gradient-to-br from-[#FFC94A] to-[#FFB020] p-6 pb-10 text-[#1E2A38] rounded-b-[32px]">
+        <div className="flex justify-between items-center mb-6">
           <div>
-            <p className="text-xs opacity-80">Today's Medication</p>
-            <p className="text-base font-bold">3 of 4 taken</p>
+            <p className="text-sm opacity-80">Today's Medication</p>
+            <p className="text-lg font-bold">3 of 4 taken</p>
           </div>
-          <div className="h-9 w-9 rounded-full bg-white/40 flex items-center justify-center border border-white/60">
-            <HeartPulse size={18} className="text-[#1E2A38]" />
+          <div className="h-10 w-10 rounded-full bg-white/40 flex items-center justify-center border border-white/60">
+            <HeartPulse size={20} className="text-[#1E2A38]" />
           </div>
         </div>
 
         {/* Progress Bar */}
-        <div className="bg-white/30 backdrop-blur-md border border-white/40 rounded-xl p-3">
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-xs font-semibold">Progress</span>
-            <span className="text-xs font-bold">75%</span>
+        <div className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-4">
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-sm font-semibold">Progress</span>
+            <span className="text-sm font-bold">75%</span>
           </div>
-          <div className="h-2 bg-white/40 rounded-full overflow-hidden">
+          <div className="h-2.5 bg-white/40 rounded-full overflow-hidden">
             <div className="h-full w-3/4 bg-[#007B83] rounded-full"></div>
           </div>
         </div>
       </div>
 
       {/* Medication List */}
-      <div className="p-5 -mt-5 space-y-3">
+      <div className="p-6 -mt-6 space-y-4">
         {['Lisinopril', 'Metformin', 'Aspirin'].map((med, idx) => (
           <div
             key={idx}
-            className={`bg-white p-3 rounded-xl shadow-sm border ${
+            className={`bg-white p-4 rounded-2xl shadow-sm border ${
               med === 'Aspirin' ? 'border-l-4 border-[#FFC94A]' : 'border-gray-100'
-            } flex items-center gap-3`}
+            } flex items-center gap-4`}
           >
             <div
-              className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
+              className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 ${
                 med === 'Aspirin' ? 'bg-[#FFC94A]/10 text-[#FFC94A] font-bold' : 'bg-[#22C55E]/10 text-[#22C55E]'
               }`}
             >
               {med === 'Aspirin' ? '!' : '✓'}
             </div>
             <div className="flex-1">
-              <div className="font-semibold text-sm text-[#1E2A38]">{med}</div>
-              <div className="text-xs text-gray-500">
+              <div className="font-semibold text-lg text-[#1E2A38]">{med}</div>
+              <div className="text-base text-gray-500">
                 {med === 'Lisinopril'
                   ? '10mg • 8:00 AM'
                   : med === 'Metformin'
