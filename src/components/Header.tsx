@@ -1,8 +1,14 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { HeartPulse, Menu, X } from "lucide-react";
+import { Activity, BookOpen, Brain, Briefcase, Cloud, Heart, HeartPulse, HelpCircle, Megaphone, Menu, Newspaper, Pill, Stethoscope, User, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/Button";
+
+interface ResourceItem {
+  name: string;
+  href: string;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
+}
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,6 +16,7 @@ export function Header() {
   const [isCTAFooterInView, setIsCTAFooterInView] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isConditionsDropdownOpen, setIsConditionsDropdownOpen] = useState(false);
+  const [isResourcesDropdownOpen, setIsResourcesDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -41,17 +48,27 @@ export function Header() {
   ];
 
   const productsDropdown = [
-    { name: "Patients", href: "/patients" },
-    { name: "Doctors", href: "/doctors" },
-    { name: "Insurers", href: "/insurers" },
-    { name: "Pharmacies", href: "/pharmacies" },
+    { name: "Patients", href: "/patients", icon: User },
+    { name: "Doctors", href: "/doctors", icon: Stethoscope },
+    { name: "Insurers", href: "/insurers", icon: Briefcase },
+    { name: "Pharmacies", href: "/pharmacies", icon: Pill },
   ];
 
   const conditionsDropdown = [
-    { name: "Cardiovascular Health", href: "#cardiovascular-health" },
-    { name: "Metabolic Disorders", href: "#metabolic-disorders" },
-    { name: "Respiratory Conditions", href: "#respiratory-conditions" },
-    { name: "Mental & Neurological Health", href: "#mental-neurological-health" },
+    { name: "Cardiovascular Health", href: "/conditions#cardiovascular-health", icon: Heart },
+    { name: "Metabolic Disorders", href: "/conditions#metabolic-disorders", icon: Activity },
+    { name: "Respiratory Conditions", href: "/conditions#respiratory-conditions", icon: Cloud },
+    { name: "Mental & Neurological Health", href: "/conditions#mental-neurological-health", icon: Brain },
+  ];
+
+  const resourcesDropdown = [
+    { name: "Patients", href: "/resources/patients", icon: User },
+    { name: "Doctors", href: "/resources/doctors", icon: Stethoscope },
+    { name: "Partners", href: "/resources/partners", icon: Briefcase },
+    { name: "Blogs", href: "/resources/blogs", icon: BookOpen },
+    { name: "News", href: "/resources/news", icon: Newspaper },
+    { name: "Press", href: "/resources/press", icon: Megaphone },
+    { name: "Help Center & FAQs", href: "/resources/help", icon: HelpCircle },
   ];
 
   return (
@@ -134,6 +151,7 @@ export function Header() {
                           to={item.href}
                           className="flex items-center px-4 py-3 text-sm font-medium text-gray-900 hover:text-[#007B83] hover:bg-gray-50 transition-colors"
                         >
+                          <item.icon size={16} className="mr-2" />
                           {item.name}
                         </Link>
                       ))}
@@ -177,6 +195,7 @@ export function Header() {
                           href={item.href}
                           className="flex items-center px-4 py-3 text-sm font-medium text-gray-900 hover:text-[#007B83] hover:bg-gray-50 transition-colors"
                         >
+                          <item.icon size={16} className="mr-2" />
                           {item.name}
                         </a>
                       ))}
@@ -186,16 +205,49 @@ export function Header() {
               </AnimatePresence>
             </div>
 
-            {/* Resources Link */}
-            <a
-              href="#resources"
-              className={`font-medium transition-colors text-sm lg:text-base relative group ${
-                isScrolled && !isCTAFooterInView ? "text-[#1E2A38] hover:text-[#007B83]" : "text-gray-300 hover:text-[#14B8A6]"
-              }`}
+            {/* Resources Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsResourcesDropdownOpen(true)}
+              onMouseLeave={() => setIsResourcesDropdownOpen(false)}
             >
-              Resources
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#14B8A6] transition-all duration-300 group-hover:w-full"></span>
-            </a>
+              <button
+                className={`font-medium transition-colors text-sm lg:text-base relative group ${
+                  isScrolled && !isCTAFooterInView || isResourcesDropdownOpen ? "text-[#1E2A38] hover:text-[#007B83]" : "text-gray-300 hover:text-[#14B8A6]"
+                }`}
+              >
+                Resources
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#14B8A6] transition-all duration-300 ${
+                  isResourcesDropdownOpen ? "w-full" : "group-hover:w-full"
+                }`}></span>
+              </button>
+
+              {/* Dropdown Menu */}
+              <AnimatePresence>
+                {isResourcesDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 mt-2 w-80 bg-white shadow-lg border border-gray-100 rounded-lg overflow-hidden"
+                  >
+                    <div className="grid grid-cols-2 gap-0 divide-x divide-gray-200">
+                      {resourcesDropdown.map((item) => (
+                        <Link
+                          key={item.name}
+                          to={item.href}
+                          className="flex items-center px-4 py-3 text-sm font-medium text-gray-900 hover:text-[#007B83] hover:bg-gray-50 transition-colors"
+                        >
+                          <item.icon size={16} className="mr-2" />
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </nav>
 
           {/* Desktop CTAs */}
@@ -288,6 +340,7 @@ export function Header() {
                             className="flex items-center py-3 px-4 text-base font-medium text-gray-900 hover:text-[#007B83] hover:bg-gray-50 rounded-lg transition-colors"
                             onClick={() => setIsMobileMenuOpen(false)}
                           >
+                            <item.icon size={16} className="mr-2" />
                             {item.name}
                           </Link>
                         ))}
@@ -344,16 +397,53 @@ export function Header() {
                 </AnimatePresence>
               </div>
 
-              {/* Resources Link */}
-              <a
-                href="#resources"
-                className={`text-lg font-medium py-2 transition-colors ${
-                  isScrolled && !isCTAFooterInView ? "text-[#1E2A38] hover:text-[#007B83]" : "text-white hover:text-[#14B8A6]"
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Resources
-              </a>
+              {/* Resources Dropdown in Mobile */}
+              <div className="py-2">
+                <button
+                  onClick={() => setIsResourcesDropdownOpen(!isResourcesDropdownOpen)}
+                  className={`text-lg font-medium flex items-center gap-2 transition-colors ${
+                    isScrolled && !isCTAFooterInView ? "text-[#1E2A38] hover:text-[#007B83]" : "text-white hover:text-[#14B8A6]"
+                  }`}
+                >
+                  Resources
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      isResourcesDropdownOpen ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {/* Mobile Resources Dropdown Content */}
+                <AnimatePresence>
+                  {isResourcesDropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pl-4 mt-2 grid grid-cols-2 gap-2">
+                        {resourcesDropdown.map((item) => (
+                          <Link
+                            key={item.name}
+                            to={item.href}
+                            className="flex items-center py-3 px-4 text-base font-medium text-gray-900 hover:text-[#007B83] hover:bg-gray-50 rounded-lg transition-colors"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            <item.icon size={16} className="mr-2" />
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
               <div className="flex flex-col gap-2 mt-3">
                 <Button

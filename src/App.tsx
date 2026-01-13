@@ -1,6 +1,7 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import About from './components/About';
 import { CTAFooter } from './components/CTAFooter';
+import { Conditions } from './components/Conditions';
 import Doctors from './components/Doctors';
 import { Features } from './components/Features';
 import { Header } from './components/Header';
@@ -26,6 +27,7 @@ function App() {
                 <CTAFooter id="cta-footer" />
               </>
             } />
+            <Route path="/conditions" element={<Conditions />} />
             <Route path="/patients" element={<Patients />} />
             <Route path="/doctors" element={<Doctors />} />
             <Route path="/pharmacies" element={<Pharmacy />} />
