@@ -36,7 +36,7 @@ const Particle: React.FC<ParticleProps> = ({ delay, duration, x, y, size }) => (
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-br from-[#1E2A38] via-[#007B83] to-[#1E2A38]">
+    <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-br from-[#1E2A38] via-[#007B83] to-[#1E2A38]">
       {/* Animated Background Gradient */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light"></div>
 

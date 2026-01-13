@@ -1,11 +1,14 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import About from './components/About';
 import { CTAFooter } from './components/CTAFooter';
+import Doctors from './components/Doctors';
 import { Features } from './components/Features';
 import { Header } from './components/Header';
 import { HowItWorks } from './components/HowItWorks';
+import Insurer from './components/Insurer';
 import { Partners } from './components/Partners';
 import Patients from './components/Patients';
+import Pharmacy from './components/Pharmacy';
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
               </>
             } />
             <Route path="/patients" element={<Patients />} />
+            <Route path="/doctors" element={<Doctors />} />
+            <Route path="/pharmacies" element={<Pharmacy />} />
+            <Route path="/insurers" element={<Insurer />} />
           </Routes>
         </main>
       </div>

@@ -9,6 +9,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCTAFooterInView, setIsCTAFooterInView] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
+  const [isConditionsDropdownOpen, setIsConditionsDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -34,16 +35,23 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { name: "About", href: "#about" },
+    { name: "About", href: "/#hero" },
     { name: "Conditions", href: "#conditions" },
     { name: "Resources", href: "#resources" },
   ];
 
   const productsDropdown = [
     { name: "Patients", href: "/patients" },
-    { name: "Doctors", href: "#doctors" },
-    { name: "Insurers", href: "#insurers" },
-    { name: "Pharmacies", href: "#pharmacies" },
+    { name: "Doctors", href: "/doctors" },
+    { name: "Insurers", href: "/insurers" },
+    { name: "Pharmacies", href: "/pharmacies" },
+  ];
+
+  const conditionsDropdown = [
+    { name: "Cardiovascular Health", href: "#cardiovascular-health" },
+    { name: "Metabolic Disorders", href: "#metabolic-disorders" },
+    { name: "Respiratory Conditions", href: "#respiratory-conditions" },
+    { name: "Mental & Neurological Health", href: "#mental-neurological-health" },
   ];
 
   return (
@@ -81,18 +89,16 @@ export function Header() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className={`font-medium transition-colors text-sm lg:text-base relative group ${
-                  isScrolled && !isCTAFooterInView ? "text-[#1E2A38] hover:text-[#007B83]" : "text-gray-300 hover:text-[#14B8A6]"
-                }`}
-              >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#14B8A6] transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
+            {/* About Link */}
+            <a
+              href="/#hero"
+              className={`font-medium transition-colors text-sm lg:text-base relative group ${
+                isScrolled && !isCTAFooterInView ? "text-[#1E2A38] hover:text-[#007B83]" : "text-gray-300 hover:text-[#14B8A6]"
+              }`}
+            >
+              About
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#14B8A6] transition-all duration-300 group-hover:w-full"></span>
+            </a>
 
             {/* Products Dropdown */}
             <div
@@ -136,6 +142,60 @@ export function Header() {
                 )}
               </AnimatePresence>
             </div>
+
+            {/* Conditions Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsConditionsDropdownOpen(true)}
+              onMouseLeave={() => setIsConditionsDropdownOpen(false)}
+            >
+              <button
+                className={`font-medium transition-colors text-sm lg:text-base relative group ${
+                  isScrolled && !isCTAFooterInView || isConditionsDropdownOpen ? "text-[#1E2A38] hover:text-[#007B83]" : "text-gray-300 hover:text-[#14B8A6]"
+                }`}
+              >
+                Conditions
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#14B8A6] transition-all duration-300 ${
+                  isConditionsDropdownOpen ? "w-full" : "group-hover:w-full"
+                }`}></span>
+              </button>
+
+              {/* Conditions Dropdown Menu */}
+              <AnimatePresence>
+                {isConditionsDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 mt-2 w-80 bg-white shadow-lg border border-gray-100 rounded-lg overflow-hidden"
+                  >
+                    <div className="grid grid-cols-2 gap-0 divide-x divide-gray-200">
+                      {conditionsDropdown.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className="flex items-center px-4 py-3 text-sm font-medium text-gray-900 hover:text-[#007B83] hover:bg-gray-50 transition-colors"
+                        >
+                          {item.name}
+                        </a>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Resources Link */}
+            <a
+              href="#resources"
+              className={`font-medium transition-colors text-sm lg:text-base relative group ${
+                isScrolled && !isCTAFooterInView ? "text-[#1E2A38] hover:text-[#007B83]" : "text-gray-300 hover:text-[#14B8A6]"
+              }`}
+            >
+              Resources
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#14B8A6] transition-all duration-300 group-hover:w-full"></span>
+            </a>
           </nav>
 
           {/* Desktop CTAs */}
@@ -179,18 +239,16 @@ export function Header() {
             className="md:hidden bg-[#1E2A38]/90 backdrop-blur-xl overflow-hidden"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-3">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className={`text-lg font-medium py-2 transition-colors ${
-                    isScrolled && !isCTAFooterInView ? "text-[#1E2A38] hover:text-[#007B83]" : "text-white hover:text-[#14B8A6]"
-                  }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
-              ))}
+              {/* About Link */}
+              <a
+                href="/#hero"
+                className={`text-lg font-medium py-2 transition-colors ${
+                  isScrolled && !isCTAFooterInView ? "text-[#1E2A38] hover:text-[#007B83]" : "text-white hover:text-[#14B8A6]"
+                }`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                About
+              </a>
 
               {/* Products Dropdown in Mobile */}
               <div className="py-2">
@@ -238,6 +296,64 @@ export function Header() {
                   )}
                 </AnimatePresence>
               </div>
+
+              {/* Conditions Dropdown in Mobile */}
+              <div className="py-2">
+                <button
+                  onClick={() => setIsConditionsDropdownOpen(!isConditionsDropdownOpen)}
+                  className={`text-lg font-medium flex items-center gap-2 transition-colors ${
+                    isScrolled && !isCTAFooterInView ? "text-[#1E2A38] hover:text-[#007B83]" : "text-white hover:text-[#14B8A6]"
+                  }`}
+                >
+                  Conditions
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      isConditionsDropdownOpen ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {/* Mobile Conditions Dropdown Content */}
+                <AnimatePresence>
+                  {isConditionsDropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pl-4 mt-2 flex flex-col gap-1">
+                        {conditionsDropdown.map((item) => (
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            className="flex items-center py-3 px-4 text-base font-medium text-gray-900 hover:text-[#007B83] hover:bg-gray-50 rounded-lg transition-colors"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {item.name}
+                          </a>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Resources Link */}
+              <a
+                href="#resources"
+                className={`text-lg font-medium py-2 transition-colors ${
+                  isScrolled && !isCTAFooterInView ? "text-[#1E2A38] hover:text-[#007B83]" : "text-white hover:text-[#14B8A6]"
+                }`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Resources
+              </a>
 
               <div className="flex flex-col gap-2 mt-3">
                 <Button
