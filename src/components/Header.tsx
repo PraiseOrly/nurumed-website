@@ -28,8 +28,8 @@ export function Header() {
       }}
       className={`fixed z-50 left-1/2 -translate-x-1/2 transition-all duration-500 ${
         isScrolled
-          ? "top-4 w-[95%] max-w-7xl rounded-3xl bg-[#1E2A38]/90 backdrop-blur-xl border border-gray-700/60 shadow-lg"
-          : "top-0 w-full rounded-none bg-[#1E2A38]/95 backdrop-blur-md shadow-none"
+          ? "top-4 w-[95%] max-w-7xl rounded-3xl bg-[#0d2628]/90 backdrop-blur-xl border border-[#0d2628]/30 shadow-lg"
+          : "top-0 w-full rounded-none bg-gradient-to-b from-[#0d2628]/95 to-[#0a1a1d]/95 backdrop-blur-md shadow-none border-0"
       }`}
     >
       <div
@@ -54,10 +54,10 @@ export function Header() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-300 hover:text-[#FFC94A] font-medium transition-colors text-sm lg:text-base relative group"
+                className="text-gray-300 hover:text-[#14B8A6] font-medium transition-colors text-sm lg:text-base relative group"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FFC94A] transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#14B8A6] transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </nav>
@@ -77,7 +77,7 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-white hover:text-[#FFC94A] transition-colors"
+            className="md:hidden p-2 text-white hover:text-[#14B8A6] transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -93,14 +93,14 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#1E2A38] border-t border-gray-800 overflow-hidden"
+            className="md:hidden bg-[#0d2628] border-t border-[#0d2628]/30 overflow-hidden"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-3">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-lg font-medium text-white py-2 border-b border-gray-800 hover:text-[#FFC94A] transition-colors"
+                  className="text-lg font-medium text-white py-2 border-b border-[#0d2628]/30 hover:text-[#14B8A6] transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
