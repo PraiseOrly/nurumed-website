@@ -1,7 +1,6 @@
 import About from './components/About';
-import { CTASection } from './components/CTASection';
+import { CTAFooter } from './components/CTAFooter';
 import { Features } from './components/Features';
-import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { HowItWorks } from './components/HowItWorks';
 import { Partners } from './components/Partners';
@@ -11,11 +10,10 @@ export function App() {
       <Header />
       <main>
         <About />
-        <Partners />
         <Features />
         <HowItWorks />
-        <CTASection />
+        <Partners />
+        <CTAFooter id="cta-footer" />
       </main>
-      <Footer />
     </div>;
 }

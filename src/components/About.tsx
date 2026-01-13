@@ -1,10 +1,7 @@
-import { motion } from 'framer-motion';
-import { AlertCircle, CheckCircle2, Clock, Eye, Heart, Target, TrendingDown, Wallet, Zap } from 'lucide-react';
+import { Eye, Heart, Target, Zap } from 'lucide-react';
 import Hero from './Hero';
 import Problem from './Problem.tsx';
 import Solution from './Solution';
-import Impact from './Impact.tsx';
-import { Button } from './ui/Button';
 
 // About content items
 const contentItems = [
@@ -54,9 +51,6 @@ export default function About() {
 
       {/* Solution Section */}
       <Solution />      
-
-      {/* Impact Section */}
-     <Impact />
     </>
   );
 }

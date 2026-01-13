@@ -3,7 +3,15 @@ import { ArrowRight, HeartPulse, ShieldCheck, Smartphone, Sparkles } from 'lucid
 import { Button } from './ui/Button';
 
 // Floating particle component
-const Particle = ({ delay, duration, x, y, size }) => (
+interface ParticleProps {
+  delay: number;
+  duration: number;
+  x: number;
+  y: number;
+  size: number;
+}
+
+const Particle: React.FC<ParticleProps> = ({ delay, duration, x, y, size }) => (
   <motion.div
     className="absolute rounded-full bg-[#FFC94A]/30 blur-sm"
     style={{

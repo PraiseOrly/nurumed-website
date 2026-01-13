@@ -1,180 +1,195 @@
 import { motion } from "framer-motion";
-import { TrendingDown, AlertTriangle, Activity, Crosshair } from "lucide-react";
-import { Button } from "./ui/Button";
+import { Activity, AlertTriangle, ShieldOff } from "lucide-react";
 
-const problems = [
-  {
-    title: "Fragmented Care Systems",
-    description:
-      "Patients often see multiple unconnected doctors with no unified medical record, leading to poor follow-up and delayed interventions.",
-    icon: <AlertTriangle size={28} />,
-    bg: "bg-[#FFC94A]/10",
-    color: "text-[#FFC94A]",
-  },
-  {
-    title: "Limited Access to Specialists",
-    description:
-      "In rural areas, chronic disease patients face long travel times, high costs, and few qualified specialists for continuous management.",
-    icon: <Crosshair size={28} />,
-    bg: "bg-[#007B83]/10",
-    color: "text-[#007B83]",
-  },
-  {
-    title: "Rising Complications & Deaths",
-    description:
-      "Unmanaged hypertension and diabetes silently drive Africa’s rising heart disease and stroke burden — preventable with coordinated care.",
-    icon: <Activity size={28} />,
-    bg: "bg-[#DC2626]/10",
-    color: "text-[#DC2626]",
-  },
-];
-
-        
 export default function Problem() {
   return (
     <section
       id="problem"
-      className="relative py-28 bg-gradient-to-b from-[#F9FAFB] to-white overflow-hidden"
+      className="relative pt-24 pb-32 bg-white overflow-hidden"
     >
-      {/* Soft glow overlay from Hero transition */}
-      <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-[#1E2A38]/40 to-transparent z-0" />
+      {/* Glow Orbs */}
+      <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-[#FFC94A]/10 rounded-full blur-[100px] animate-pulse -z-10" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#007B83]/20 rounded-full blur-[100px] -z-10" />
 
-      {/* Background animated pattern */}
+      {/* Noise Overlay */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 0.2 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
-        className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"
+        className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-soft-light opacity-20 pointer-events-none"
       />
 
-      <div className="container mx-auto px-6 lg:px-16 relative z-10">
-        {/* Header Section */}
-        <motion.div
+      <div className="container mx-auto px-6 lg:px-20 relative z-10">
+        {/* Heading */}
+        <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-4xl mx-auto mb-20"
-        >
-          <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-[#FFC94A]/10 border border-[#FFC94A]/30 text-[#1E2A38] font-semibold text-sm">
-            Africa’s Hidden Health Crisis
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1E2A38] mb-6 leading-tight">
-            Chronic Diseases Are Africa’s Silent Epidemic
-          </h2>
-          <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-            Across Africa, millions live with hypertension and diabetes — yet
-            fewer than one in five receive consistent treatment. Fragmented
-            systems leave patients in the dark.
-          </p>
-        </motion.div>
-
-        {/* Featured Stat Callout */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative bg-white border border-[#FFC94A]/30 rounded-3xl shadow-xl p-10 mb-20 overflow-hidden"
+          className="text-5xl md:text-6xl font-heading font-extrabold text-center text-[#1E2A38] mb-8"
         >
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#DC2626] via-[#FFC94A] to-[#007B83]" />
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div className="flex items-start gap-6">
-              <div className="bg-[#DC2626]/10 p-4 rounded-2xl">
-                <TrendingDown className="text-[#DC2626]" size={40} />
-              </div>
-              <div>
-                <p className="text-[#1E2A38] font-bold text-2xl leading-snug">
-                  40% of African adults live with hypertension.
-                </p>
-                <p className="text-gray-600 text-lg mt-2">
-                  Yet fewer than 20% receive regular, coordinated care.
-                </p>
-              </div>
-            </div>
-            <div className="hidden md:block border-l border-gray-200 pl-10">
-              <p className="text-gray-600">
-                This silent crisis drives preventable strokes, heart failure,
-                and kidney disease — devastating families and communities.
-              </p>
-            </div>
-          </div>
-        </motion.div>
+          <span className="text-[#FFC94A] inline-block relative">The Problem</span>
+        </motion.h2>
 
-        {/* Problem Cards */}
-        <div className="grid md:grid-cols-3 gap-10">
-          {problems.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.15 }}
-              viewport={{ once: true }}
-              whileHover={{
-                y: -8,
-                scale: 1.02,
-                boxShadow:
-                  "0 25px 50px -12px rgba(31, 41, 55, 0.1)",
-              }}
-              className="bg-white border border-gray-100 p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
-            >
-              <div
-                className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${item.bg} ${item.color}`}
-              >
-                {item.icon}
-              </div>
-              <h3 className="text-xl font-bold text-[#1E2A38] mb-3">
-                {item.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">{item.description}</p>
-            </motion.div>
-          ))}
+        <motion.h3
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-2xl md:text-3xl font-heading font-bold text-[#1E2A38] text-center mb-10"
+        >
+          Chronic Diseases Are Africa's Silent Epidemic
+        </motion.h3>
+
+        {/* Intro Paragraph */}
+        <p className="max-w-3xl mx-auto text-center text-base md:text-lg lg:text-xl font-body font-medium text-gray-700 mb-12 leading-relaxed">
+          Managing chronic conditions in Africa has been difficult, expensive, and fragmented. 
+          Millions suffer preventable complications every year.
+        </p>
+
+        {/* Stats */}
+        <div className="text-center space-y-4 mb-16 font-body font-semibold">
+          <p className="text-2xl md:text-3xl text-[#1E2A38]">
+            Over <span className="text-[#DC2626] font-bold">40%</span> of adults in Africa have high blood pressure.
+          </p>
+          <p className="text-2xl md:text-3xl text-[#1E2A38]">
+            Fewer than{" "}
+            <span className="text-[#007B83] font-bold">1 in 5</span> receive continuous care.
+          </p>
+          <p className="text-2xl md:text-3xl text-[#1E2A38]">
+            Leading to preventable heart attacks, strokes, and kidney failure.
+          </p>
         </div>
 
-        {/* Call to Action */}
+        {/* Barriers */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-6xl mx-auto"
+        >
+          <h4 className="text-2xl font-heading font-bold text-[#1E2A38] text-center mb-12">
+            Key Barriers
+          </h4>
+
+          <div className="grid md:grid-cols-3 gap-10">
+            {/* Barrier 1 - Fragmented Care */}
+            <motion.div
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -60 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.03, y: -6 }}
+              className="relative bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300"
+            >
+              {/* Prominent Illustration */}
+              <div className="w-full h-64 bg-gradient-to-br from-[#F8FAFC] to-[#E2E8F0] flex items-center justify-center p-4">
+                <img
+                  src="/illustrations/fragmented-care.svg"
+                  alt="Fragmented Care Illustration"
+                  className="w-full h-full object-contain max-h-56"
+                />
+              </div>
+              
+              {/* Content */}
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-3">
+                  <AlertTriangle className="text-[#FFC94A]" size={28} />
+                  <h5 className="text-xl font-heading font-bold text-[#1E2A38]">
+                    Fragmented Care
+                  </h5>
+                </div>
+                <p className="text-gray-600 font-body leading-relaxed">
+                  No link between doctors, pharmacies, and labs. Healthcare providers work in silos, creating gaps in patient care.
+                </p>
+              </div>
+              
+              {/* Gradient Accent Border */}
+              <div className="h-[4px] w-full bg-gradient-to-r from-[#1E2A38] via-[#007B83] to-[#1E2A38]" />
+            </motion.div>
+
+            {/* Barrier 2 - Financial Barriers */}
+            <motion.div
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 60 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.03, y: -6 }}
+              className="relative bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300"
+            >
+              {/* Prominent Illustration */}
+              <div className="w-full h-64 bg-gradient-to-br from-[#F8FAFC] to-[#E2E8F0] flex items-center justify-center p-4">
+                <img
+                  src="/illustrations/financial-barriers.svg"
+                  alt="Financial Barriers Illustration"
+                  className="w-full h-full object-contain max-h-56"
+                />
+              </div>
+              
+              {/* Content */}
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-3">
+                  <ShieldOff className="text-[#DC2626]" size={28} />
+                  <h5 className="text-xl font-heading font-bold text-[#1E2A38]">
+                    Financial Barriers
+                  </h5>
+                </div>
+                <p className="text-gray-600 font-body leading-relaxed">
+                  High out-of-pocket costs and limited insurance coverage prevent millions from accessing essential medications and treatments.
+                </p>
+              </div>
+              
+              <div className="h-[4px] w-full bg-gradient-to-r from-[#1E2A38] via-[#007B83] to-[#1E2A38]" />
+            </motion.div>
+
+            {/* Barrier 3 - Limited Access */}
+            <motion.div
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: 60 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.03, y: -6 }}
+              className="relative bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300"
+            >
+              {/* Prominent Illustration */}
+              <div className="w-full h-64 bg-gradient-to-br from-[#F8FAFC] to-[#E2E8F0] flex items-center justify-center p-4">
+                <img
+                  src="/illustrations/limited-access.svg"
+                  alt="Limited Access Illustration"
+                  className="w-full h-full object-contain max-h-56"
+                />
+              </div>
+              
+              {/* Content */}
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-3">
+                  <Activity className="text-[#007B83]" size={28} />
+                  <h5 className="text-xl font-heading font-bold text-[#1E2A38]">
+                    Limited Access
+                  </h5>
+                </div>
+                <p className="text-gray-600 font-body leading-relaxed">
+                  Long wait times, travel distances, and lack of specialists in rural and underserved areas create significant barriers to care.
+                </p>
+              </div>
+              
+              <div className="h-[4px] w-full bg-gradient-to-r from-[#1E2A38] via-[#007B83] to-[#1E2A38]" />
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Closing line */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-24 bg-gradient-to-r from-[#007B83] via-[#0D9488] to-[#1E2A38] p-10 md:p-12 rounded-3xl text-center relative overflow-hidden"
+          transition={{ duration: 0.6 }}
+          className="text-center mt-24"
         >
-          {/* Floating lights */}
-          <motion.div
-            animate={{
-              opacity: [0.2, 0.4, 0.2],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{ duration: 6, repeat: Infinity }}
-            className="absolute top-0 left-0 w-64 h-64 bg-[#FFC94A]/20 rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3"
-          />
-          <motion.div
-            animate={{
-              opacity: [0.3, 0.6, 0.3],
-              scale: [1.1, 0.9, 1.1],
-            }}
-            transition={{ duration: 8, repeat: Infinity }}
-            className="absolute bottom-0 right-0 w-80 h-80 bg-[#DC2626]/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"
-          />
-
-          <div className="relative z-10">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
-              NuruMed is here to change that.
-            </h3>
-            <p className="text-gray-200 mb-6 max-w-2xl mx-auto">
-              Empowering patients, doctors, and health systems with connected,
-              data-driven care — because no one should face chronic illness
-              alone.
-            </p>
-            <Button
-              size="lg"
-              className="bg-[#FFC94A] text-[#1E2A38] hover:bg-[#FFC94A]/90 font-bold"
-            >
-              See How NuruMed Works
-            </Button>
-          </div>
+          <h3 className="text-2xl md:text-3xl font-heading font-bold text-[#1E2A38]">
+            We're <span className="text-[#FFC94A] relative">changing</span> that.
+          </h3>
         </motion.div>
       </div>
     </section>
   );
 }
+

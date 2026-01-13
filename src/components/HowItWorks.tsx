@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { UserPlus, UserCheck, Pill, TrendingUp } from 'lucide-react';
+import { Pill, TrendingUp, UserCheck, UserPlus } from 'lucide-react';
 const steps = [{
   icon: <UserPlus className="w-6 h-6" />,
   title: 'Sign Up',
@@ -77,11 +76,5 @@ export function HowItWorks() {
         </div>
       </div>
 
-      {/* Wave Divider Bottom */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 40C240 80 480 80 720 40C960 0 1200 0 1440 40V80H0V40Z" fill="#007B83" />
-        </svg>
-      </div>
     </section>;
 }
