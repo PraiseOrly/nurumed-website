@@ -14,22 +14,21 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { name: "Problem", href: "#problem" },
-    { name: "Solution", href: "#solution" },
-    { name: "Features", href: "#features" },
-    { name: "How It Works", href: "#how-it-works" },
-    { name: "Impact", href: "#impact" },
+    { name: "About", href: "#about" },
+    { name: "Products", href: "#products" },
+    { name: "Conditions", href: "#conditions" },
+    { name: "Resources", href: "#resources" },
   ];
 
   return (
     <nav
       style={{
-        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        fontFamily: '__LocalPoppinsFont_1100c3, __LocalPoppinsFont_Fallback_1100c3, Poppins, sans-serif',
       }}
       className={`fixed z-50 left-1/2 -translate-x-1/2 transition-all duration-500 ${
         isScrolled
-          ? "top-4 w-[95%] max-w-7xl rounded-3xl bg-[#0d2628]/90 backdrop-blur-xl border border-[#0d2628]/30 shadow-lg"
-          : "top-0 w-full rounded-none bg-gradient-to-b from-[#0d2628]/95 to-[#0a1a1d]/95 backdrop-blur-md shadow-none border-0"
+          ? "top-4 w-[95%] max-w-7xl rounded-3xl bg-gradient-to-br from-[#0a1a1d] via-[#0d2628] to-[#0a1a1d] backdrop-blur-xl shadow-lg"
+          : "top-0 w-full bg-gradient-to-br from-[#0a1a1d] via-[#0d2628] to-[#0a1a1d] backdrop-blur-md"
       }`}
     >
       <div
@@ -93,14 +92,14 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0d2628] border-t border-[#0d2628]/30 overflow-hidden"
+            className="md:hidden bg-gradient-to-br from-[#0a1a1d] via-[#0d2628] to-[#0a1a1d] overflow-hidden"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-3">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-lg font-medium text-white py-2 border-b border-[#0d2628]/30 hover:text-[#14B8A6] transition-colors"
+                  className="text-lg font-medium text-white py-2 hover:text-[#14B8A6] transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
